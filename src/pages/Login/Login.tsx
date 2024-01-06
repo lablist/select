@@ -36,7 +36,6 @@ function Login() {
   }
 
   useEffect(() => {
-    // clean the function to prevent memory leak
     return () => setLoginRequestStatus('success');
   }, []);
 
@@ -46,7 +45,7 @@ function Login() {
         <div className="form">
           <input
             value={values.login}
-            type="login"
+            type="text"
             name="login"
             id="login"
             disabled={loginRequestStatus === 'loading'}

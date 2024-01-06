@@ -1,13 +1,24 @@
 import { SignInCredentials } from "../contexts";
 import mocksData from "../__mocks__/fileMock";
 
-export type FakeResponse = {
-  status: number;
-  data?: unknown;
-  message?: string;
+export type TreeViewItem = {
+  key: string;
+  name: string;
+  children?: TreeViewItem[];
 }
 
-const fakeFetch = function (condition:boolean, successObject:FakeResponse, errorObject:FakeResponse):Promise<FakeResponse> {
+export type ResponseError = {
+  status: number;
+  data?: undefined;
+  message: string;
+}
+
+export type ResponseSuccess<T> = {
+  status: number;
+  data: T;
+}
+
+const fakeFetch = function<T, U> (condition:boolean, successObject:T, errorObject:U):Promise<T|U> {
   const min = 500;
   const max = 3000;
   const fDelay = Math.floor(Math.random() * (max - min + 1) + min);
@@ -23,14 +34,14 @@ const fakeFetch = function (condition:boolean, successObject:FakeResponse, error
 }
 
 export default {
-  login: async function(credentials: SignInCredentials): Promise<FakeResponse> {
+  login: async function(credentials: SignInCredentials):Promise<ResponseSuccess<string>|ResponseError> {
     return await fakeFetch(
       !!(credentials?.login?.length && credentials?.password?.length),
       {status: 200, data: credentials?.login},
       {status: 401, message: "Unauthorized"}
     );
   },
-  getData: async function(): Promise<FakeResponse> {
+  getData: async function():Promise<ResponseSuccess<TreeViewItem[]>|ResponseError> {
     return await fakeFetch(
       true,
       {status: 200, data: mocksData},
