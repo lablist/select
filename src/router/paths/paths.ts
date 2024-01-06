@@ -1,6 +1,7 @@
-const ROOT_PATH = '/';
-const LOGIN_PATH = '/login';
-const BROWSE_PATH = '/browse';
+const prePath = '/select/'
+const ROOT_PATH = prePath;
+const LOGIN_PATH = prePath + 'login';
+const BROWSE_PATH = prePath + 'browse';
 
 const paths = {
   ROOT_PATH,
