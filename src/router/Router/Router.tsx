@@ -14,30 +14,33 @@ function Router() {
   return (
     <Routes>
       <Route
-        path={ROOT_PATH}
-        element={
-          <PublicRoute>
-            <Home />
-          </PublicRoute>
-        }
-      />
-      <Route
-        path={LOGIN_PATH}
-        element={
-          <PublicRoute redirectTo={ROOT_PATH}>
-            <Login />
-          </PublicRoute>
-        }
-      />
-      <Route
-        path={BROWSE_PATH}
-        element={
-          <PrivateRoute redirectTo={LOGIN_PATH}>
-            <Browse />
-          </PrivateRoute>
-        }
-      />
-      <Route path="*" element={<h1>404</h1>} />
+        path={ROOT_PATH}>
+        <Route
+          path={ROOT_PATH}
+          element={
+            <PublicRoute>
+              <Home />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path={LOGIN_PATH}
+          element={
+            <PublicRoute redirectTo={ROOT_PATH}>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path={BROWSE_PATH}
+          element={
+            <PrivateRoute redirectTo={LOGIN_PATH}>
+              <Browse />
+            </PrivateRoute>
+          }
+        />
+        <Route path="*" element={<h1>404</h1>} />
+      </Route>
     </Routes>
   )
 }
