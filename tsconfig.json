@@ -21,7 +21,7 @@
     "noUnusedLocals": true,
     "jsx": "react-jsx"
   },
-  "exclude": ["node_modules", "build", "coverage", "webpack.*.js", "*.config.js", "*.test.ts*"],
+  "exclude": ["node_modules", "build", "coverage", "webpack.*.js", "*.config.js", "*.spec.ts*"],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
