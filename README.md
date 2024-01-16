@@ -1,4 +1,4 @@
 # test
 React, typescript
 
-[Demo] (https://lablist.github.io/select/) 
+[Demo](https://lablist.github.io/select/) 
